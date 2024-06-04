@@ -2,7 +2,7 @@
 #include "address_book.h"
 
 
-//³õÊ¼»¯Í¨Ñ¶Â¼
+//åˆå§‹åŒ–é€šè®¯å½•
 void Init_Address_book(struct Address_book* pc)
 {
 	pc->count = 0;
@@ -13,26 +13,26 @@ void Add_book(struct Address_book* pc)
 	assert(pc);
 	if (pc->count == MAX)
 	{
-		printf("Í¨Ñ¶Â¼ÒÑÂú\n");
+		printf("é€šè®¯å½•å·²æ»¡\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëÃû×Ö-> ");
-		scanf("%s",pc->data[pc->count].name);     //Ãû×ÖÊÇchar ÀàĞÍ£¬²»ĞèÒªÈ¡µØÖ·
-		printf("ÇëÊäÈëÄêÁä-> ");
-		scanf("%d", &(pc->data[pc->count].age));  //ÄêÁäÊÇĞèÒªÈ¡µØÖ·µÄ
-		printf("ÇëÊäÈëĞÔ±ğ-> ");
+		printf("è¯·è¾“å…¥åå­—-> ");
+		scanf("%s",pc->data[pc->count].name);     //åå­—æ˜¯char ç±»å‹ï¼Œä¸éœ€è¦å–åœ°å€
+		printf("è¯·è¾“å…¥å¹´é¾„-> ");
+		scanf("%d", &(pc->data[pc->count].age));  //å¹´é¾„æ˜¯éœ€è¦å–åœ°å€çš„
+		printf("è¯·è¾“å…¥æ€§åˆ«-> ");
 		scanf("%s", pc->data[pc->count].sex);
-		printf("ÇëÊäÈëµç»°-> ");
+		printf("è¯·è¾“å…¥ç”µè¯-> ");
 		scanf("%s", pc->data[pc->count].tele);
-		printf("ÇëÊäÈëµØÖ·-> ");
+		printf("è¯·è¾“å…¥åœ°å€-> ");
 		scanf("%s", pc->data[pc->count].address);
 
 		pc->count++;
-		printf("Ôö¼Ó³É¹¦\n");
+		printf("å¢åŠ æˆåŠŸ\n");
 	}
 }
-static int Findbyname(struct Address_book* pc, char name[])  // ¼ÓÁËstaticºó£¬´Ëº¯ÊıÖ»ÄÜÔÚÕâ¸öÎÄ¼şÏÂÊ¹ÓÃ
+static int Findbyname(struct Address_book* pc, char name[])  // åŠ äº†staticåï¼Œæ­¤å‡½æ•°åªèƒ½åœ¨è¿™ä¸ªæ–‡ä»¶ä¸‹ä½¿ç”¨
 {
 	assert(pc);
 	int i;
@@ -51,89 +51,89 @@ void Del_book(struct Address_book* pc)
 	char name[MAX_NAME];
 	if (pc->count == 0)
 	{
-		printf("Í¨Ñ¶Â¼Îª¿Õ£¬Ã»ÓĞĞÅÏ¢¿ÉÒÔÉ¾\n");
+		printf("é€šè®¯å½•ä¸ºç©ºï¼Œæ²¡æœ‰ä¿¡æ¯å¯ä»¥åˆ \n");
 		return;
 	}
-	printf("ÇëÊäÈëÒªÉ¾³ıÈËµÄÃû×Ö-> ");
+	printf("è¯·è¾“å…¥è¦åˆ é™¤äººçš„åå­—-> ");
 	scanf("%s", name);
-	  //É¾³ı
-	//1. ²éÕÒ
+	  //åˆ é™¤
+	//1. æŸ¥æ‰¾
 	int i;
 	int ret = Findbyname(pc, name);
 	if (ret == -1)
 	{
-		printf("ÒªÉ¾³ıµÄ²»ÔÚÍ¨Ñ¶Â¼ÀïÃæ\n");
+		printf("è¦åˆ é™¤çš„ä¸åœ¨é€šè®¯å½•é‡Œé¢\n");
 		return;
 	}
 
-	//2. É¾³ı
-	for (i = ret; i < pc->count-1; i++)   // ÕâÀï-1¿ÉÒÔ·ÀÖ¹Ô½½ç·ÃÎÊ
+	//2. åˆ é™¤
+	for (i = ret; i < pc->count-1; i++)   // è¿™é‡Œ-1å¯ä»¥é˜²æ­¢è¶Šç•Œè®¿é—®
 	{
 		pc->data[i] = pc->data[i + 1];
 	}
 	pc->count--;
-	printf("É¾³ı³É¹¦\n");
+	printf("åˆ é™¤æˆåŠŸ\n");
 }
 void Show_book(struct Address_book* pc)
 {
 	assert(pc);
 	int i;
-	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 	for (i = 0; i < pc->count; i++)
 	{
 		printf("%-20s\t%-5d\t%-5s\t%-12s\t%-30s\n",     pc->data[i].name,
-														pc->data[i].age, 
-														pc->data[i].sex, 
-														pc->data[i].tele,
-														pc->data[i].address);
+								pc->data[i].age, 
+								pc->data[i].sex, 
+								pc->data[i].tele,
+								pc->data[i].address);
 	}
 }
 void Search_book(struct Address_book* pc)
 {
 	assert(pc);
-	printf("ÇëÊäÈëÄãÒª²éÕÒµÄÈË-> ");
+	printf("è¯·è¾“å…¥ä½ è¦æŸ¥æ‰¾çš„äºº-> ");
 	char name[MAX_NAME];
 	scanf("%s", name);
 	int ret = Findbyname(pc, name);
 	if (ret == -1)
 	{
-		printf("Òª²éÕÒµÄÈË²»ÔÚÍ¨Ñ¶Â¼ÖĞ\n");
+		printf("è¦æŸ¥æ‰¾çš„äººä¸åœ¨é€šè®¯å½•ä¸­\n");
 		return;
 	}
-	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
-	printf("%-20s\t%-5d\t%-5s\t%-12s\t%-30s\n", pc->data[ret].name,
-												pc->data[ret].age,
-												pc->data[ret].sex,
-												pc->data[ret].tele,
-												pc->data[ret].address);
+	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
+	printf("%-20s\t%-5d\t%-5s\t%-12s\t%-30s\n",     pc->data[ret].name,
+						        pc->data[ret].age,
+							pc->data[ret].sex,
+							pc->data[ret].tele,
+							pc->data[ret].address);
 }
 void Modify_book(struct Address_book* pc)
 {
 	assert(pc);
-	printf("ÇëÊäÈëÄãÒªĞŞ¸ÄµÄÈË-> ");
+	printf("è¯·è¾“å…¥ä½ è¦ä¿®æ”¹çš„äºº-> ");
 	char name[MAX_NAME];
 	scanf("%s", name);
-	//²éÕÒ
+	//æŸ¥æ‰¾
 	int ret = Findbyname(pc, name);
 	if (ret == -1)
 	{
-		printf("ÒªĞŞ¸ÄµÄÈË²»ÔÚÍ¨Ñ¶Â¼ÖĞ\n");
+		printf("è¦ä¿®æ”¹çš„äººä¸åœ¨é€šè®¯å½•ä¸­\n");
 		return;
 	}
-	//ĞŞ¸Ä
-	printf("ÇëÊäÈëĞŞ¸ÄºóµÄÃû×Ö-> ");
-	scanf("%s", pc->data[ret].name);       //Ãû×ÖÊÇchar ÀàĞÍ£¬²»ĞèÒªÈ¡µØÖ·
-	printf("ÇëÊäÈëĞŞ¸ÄºóµÄÄêÁä-> ");
-	scanf("%d", &(pc->data[ret].age));     //ÄêÁäÊÇĞèÒªÈ¡µØÖ·µÄ
-	printf("ÇëÊäÈëĞŞ¸ÄºóµÄĞÔ±ğ-> ");
+	//ä¿®æ”¹
+	printf("è¯·è¾“å…¥ä¿®æ”¹åçš„åå­—-> ");
+	scanf("%s", pc->data[ret].name);       //åå­—æ˜¯char ç±»å‹ï¼Œä¸éœ€è¦å–åœ°å€
+	printf("è¯·è¾“å…¥ä¿®æ”¹åçš„å¹´é¾„-> ");
+	scanf("%d", &(pc->data[ret].age));     //å¹´é¾„æ˜¯éœ€è¦å–åœ°å€çš„
+	printf("è¯·è¾“å…¥ä¿®æ”¹åçš„æ€§åˆ«-> ");
 	scanf("%s", pc->data[ret].sex);
-	printf("ÇëÊäÈëĞŞ¸ÄºóµÄµç»°-> ");
+	printf("è¯·è¾“å…¥ä¿®æ”¹åçš„ç”µè¯-> ");
 	scanf("%s", pc->data[ret].tele);
-	printf("ÇëÊäÈëĞŞ¸ÄºóµÄµØÖ·-> ");
+	printf("è¯·è¾“å…¥ä¿®æ”¹åçš„åœ°å€-> ");
 	scanf("%s", pc->data[ret].address);
 
-	printf("ĞŞ¸Ä³É¹¦\n");
-	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+	printf("ä¿®æ”¹æˆåŠŸ\n");
+	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-30s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 	printf("%-20s\t%-5d\t%-5s\t%-12s\t%-30s\n", pc->data[ret].name,
 		pc->data[ret].age,
 		pc->data[ret].sex,
@@ -141,7 +141,7 @@ void Modify_book(struct Address_book* pc)
 		pc->data[ret].address);
 }
 
-//°´Ãû×ÖÅÅĞò
+//æŒ‰åå­—æ’åº
 int cmp_by_name(void* e1, void* e2)
 {
 	return strcmp(((struct Peo*)e1)->name,((struct Peo*)e2)->name);
@@ -153,18 +153,18 @@ int cmp_by_age(void* e1, void* e2)
 void Sort_book(struct Address_book* pc, struct Address_book* b)
 {
 	assert(pc);
-	printf("Ñ¡ÔñÄãµÄÅÅĞò·½·¨-> (1Îª°´Ãû×ÖÅÅĞò£¬2Îª°´ÄêÁäÅÅĞò) \n");
+	printf("é€‰æ‹©ä½ çš„æ’åºæ–¹æ³•-> (1ä¸ºæŒ‰åå­—æ’åºï¼Œ2ä¸ºæŒ‰å¹´é¾„æ’åº) \n");
 	int i;
 	scanf("%d", &i);
 	if (i == 1)
 	{
 		qsort(pc->data, pc->count, sizeof(struct Peo), cmp_by_name);
-		printf("ÅÅĞò³É¹¦\n");
+		printf("æ’åºæˆåŠŸ\n");
 	}
 	else
 	{
 		qsort(pc->data, pc->count, sizeof(struct Peo), cmp_by_age);
-		printf("ÅÅĞò³É¹¦\n");
+		printf("æ’åºæˆåŠŸ\n");
 	}
 
 }
